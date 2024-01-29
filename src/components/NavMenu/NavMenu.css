@@ -1,0 +1,36 @@
+.tabs__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.kanban {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 100%;
+}
+.in-progress {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 100%;
+}
+.done {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 100%;
+}
+
+.kanban-content {
+  display: flex;
+  height: 100%;
+}
