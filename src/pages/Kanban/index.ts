@@ -1,1 +1,1 @@
-export { Kanban } from './Kanban';
+export { Kanban, type KanbanTask } from './Kanban';
