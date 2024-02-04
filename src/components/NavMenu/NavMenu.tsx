@@ -1,20 +1,22 @@
 import { useLocation } from "react-router-dom";
 import { NavItem } from "../NavItem/NavItem";
 import "./NavMenu.css";
+
 export const NavMenu = () => {
   const location = useLocation();
   const { pathname } = location;
   const isActive = (path: string) => pathname === path;
   return (
     <ul className="tabs__list">
-      <NavItem name={"Checklist"} path={"/"} isActive={isActive("/")} />
+      <div className="logo"/>
+      <NavItem name={"Checklist"} path={"/checklist"} isActive={isActive("/checklist")} />
       <NavItem
         name={"Kanban"}
         path={"/kanban"}
         isActive={isActive("/kanban")}
       />
       <NavItem
-        name={"Pomadoro timer"}
+        name={"Pomadoro"}
         path={"/pomadoro"}
         isActive={isActive("/pomadoro")}
       />

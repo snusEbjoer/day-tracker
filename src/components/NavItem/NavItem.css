@@ -1,35 +1,29 @@
 .focused {
-  border-radius: 10px;
-  background: #5932ea;
-  color: #fff;
-  color: #fff;
-  font-family: "PT Sans";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.14px;
+  background: rgba(72, 52, 212, 0.15);
+  color: rgba(72, 52, 212, 0.8);
+  font-weight: bold;
 }
 .not-focused {
-  color: #9197b3;
+  color: black;
 }
 .link {
   display: flex;
   justify-content: center;
   text-decoration: none;
-  font-family: "PT Sans";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  border-radius: 12px;
+  font: "PT Sans" 14px;
   line-height: normal;
-  letter-spacing: -0.14px;
   cursor: pointer;
-  width: 100%;
+  padding: 8px 1.5rem;
+}
+
+.link:not(.focused):hover {
+  background: rgba(189, 195, 199, 0.2);
+  color: rgba(0, 0, 0, 0.8); 
 }
 
 .nav-item {
   display: flex;
-  width: 250px;
   height: 46px;
   flex-shrink: 0;
   justify-content: center;

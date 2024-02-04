@@ -11,7 +11,6 @@ export const NavItem = ({ name, path, isActive }: NavItemProps) => {
     <li
       className={classNames({
         "nav-item": true,
-        focused: isActive,
         "not-focused": !isActive,
       })}
     >

@@ -1,0 +1,12 @@
+.card {
+	background: white;
+	padding: 15px;
+	border-radius: 20px;
+	aspect-ratio: 1.5;
+}
+.dashboard_cards {
+	padding: 10px
+}
+img {
+	max-width: 150px;
+}
