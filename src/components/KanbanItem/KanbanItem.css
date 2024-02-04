@@ -1,0 +1,15 @@
+.kanban-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 10px;
+}
+.item-name {
+  font-family: "PT Sans";
+  font-size: 14px;
+  word-break: break-word;
+}

@@ -1,0 +1,24 @@
+.kanban-col {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  max-width: 380px;
+  height: 100%;
+  border-radius: 30px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0px 3px 6px 0px rgba(34, 60, 80, 0.2);
+}
+
+.column-title {
+  font-family: "Poppins", sans-serif;
+  padding-left: 5px;
+  padding-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.column-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
