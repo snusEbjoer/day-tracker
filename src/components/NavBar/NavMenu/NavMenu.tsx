@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { NavItem } from "../NavItem/NavItem";
+import { NavItem } from "../NavItem";
 import "./NavMenu.css";
 
 export const NavMenu = () => {

@@ -7,7 +7,7 @@ type CheckListItemProps = {
 };
 export const CheckListItem = ({
   name,
-  completed,
+  // completed,
   changeCompleted,
   deleteTask,
 }: CheckListItemProps) => {
