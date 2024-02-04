@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./CheckList.css";
-import { AddItem } from "../../components/AddItem/AddItem";
-import { CheckListItem } from "../../components/CheckListItem/CheckListItem";
+import { AddItem } from "@/components/AddItem";
+import { CheckListItem } from "@/components/CheckListItem";
 
 export const CheckList = () => {
   type Task = {

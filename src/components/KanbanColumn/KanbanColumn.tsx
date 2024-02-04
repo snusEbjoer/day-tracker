@@ -1,4 +1,4 @@
-import { KanbanTask } from "../../pages/Kanban";
+import { KanbanTask } from "@/pages/Kanban";
 import { DragEvent } from "react";
 import { KanbanItem } from "../KanbanItem";
 import "./KanbanColumn.css";

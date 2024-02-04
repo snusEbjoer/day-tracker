@@ -1,4 +1,4 @@
-import { Layout } from "./components/Layout/Layout";
+import { Layout } from "./components/Layout";
 import { Route, Routes } from "react-router-dom";
 import { Kanban } from "./pages/Kanban";
 import { CheckList } from "./pages/CheckList";
