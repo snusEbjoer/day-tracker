@@ -2,7 +2,7 @@ import { Cards } from '@/components/Dashboard/Cards';
 import { Search } from '@/components/Dashboard/Search';
 import './DashboardPage.css';
 
-export const DashboardPage = () => {
+export const Dashboard = () => {
 
 	const day = new Date().toLocaleString('en-US', { day: 'numeric', month: 'long'});
 
