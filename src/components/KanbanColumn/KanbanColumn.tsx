@@ -1,6 +1,6 @@
-import { KanbanTask } from "../Kanban/Kanban";
+import { KanbanTask } from "../../pages/Kanban";
 import { DragEvent } from "react";
-import { KanbanItem } from "../KanbanItem/KanbanItem";
+import { KanbanItem } from "../KanbanItem";
 import "./KanbanColumn.css";
 type KanbanColumnProps = {
   name: string;
