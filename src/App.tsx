@@ -1,4 +1,3 @@
-import "./App.css";
 import { CheckList } from "./components/CheckList/CheckList";
 import { Layout } from "./components/Layout/Layout";
 import { Route, Routes } from "react-router-dom";
