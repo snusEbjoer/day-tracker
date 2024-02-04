@@ -1,7 +1,7 @@
-import { CheckList } from "./components/CheckList/CheckList";
 import { Layout } from "./components/Layout/Layout";
 import { Route, Routes } from "react-router-dom";
-import { Kanban } from "./components/Kanban/Kanban";
+import { Kanban } from "./pages/Kanban";
+import { CheckList } from "./pages/CheckList";
 function App() {
   return (
     <Routes>
