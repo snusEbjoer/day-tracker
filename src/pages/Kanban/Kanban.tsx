@@ -39,7 +39,7 @@ export const Kanban = () => {
 
     return findLast(newArr);
   };
-  const handleDragStart = (e: DragEvent, id: number) => {
+  const handleDragStart = (_e: DragEvent, id: number) => {
     setDraggetItem(id);
   };
   const handleDragEnd = (e: DragEvent) => {
@@ -58,7 +58,7 @@ export const Kanban = () => {
     setDraggetItem(0);
     acc = 1;
   };
-  const handleDragEnter = (e: DragEvent, name: string) => {
+  const handleDragEnter = (_e: DragEvent, name: string) => {
     setDestitanion(name);
   };
   const handleItemDrop = (e: DragEvent, id: number) => {
