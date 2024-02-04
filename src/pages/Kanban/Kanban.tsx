@@ -1,6 +1,6 @@
 import { DragEvent, useState } from "react";
 import { AddItem } from "@/components/AddItem";
-import { KanbanColumn } from "@/components/KanbanColumn";
+import { KanbanColumn } from "@/components/Kanban/KanbanColumn";
 import "./Kanban.css";
 export type KanbanTask = {
   id: number;
