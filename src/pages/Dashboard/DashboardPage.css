@@ -1,51 +1,51 @@
 .dashboard {
-				width: 100%;
-				height: 100%;
-				padding: 3rem;
+	width: 100%;
+	height: 100%;
+	padding: 3rem;
 }
 .dashboard-content {
-				width: 100%;
-				height: 100%;
-				display: grid;
-				grid-template-columns: repeat(12, 1fr);
-				grid-template-rows: auto;
-				gap: 15px;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto;
+	gap: 15px;
 }
 
 .dashboard-content > * {
-				border: 1px solid black;
+	border: 1px solid black;
 }
 
 .dashboard_title {
-				grid-row: 1;
-				grid-column: 1 / span 4;
+	grid-row: 1;
+	grid-column: 1 / span 4;
 }
 
 .cards {
-				grid-row: 2 / span 8;
-				grid-column: 1 / span 4;
+	grid-row: 2 / span 8;
+	grid-column: 1 / span 4;
 }
 .actions {
-				grid-row: 2 / span 8;
-				grid-column: 5 / span 5;
+	grid-row: 2 / span 8;
+	grid-column: 5 / span 5;
 }
 .board {
-				grid-row: span 7;
-				grid-column: span 3;
+	grid-row: span 7;
+	grid-column: span 3;
 }
 .search {
-				grid-row: 1;
-				grid-column: 5 / span 5;
+	grid-row: 1;
+	grid-column: 5 / span 5;
 }
 .stories {
-				grid-row: 1 / span 2;
-				grid-column: 10 / span 3;
+	grid-row: 1 / span 2;
+	grid-column: 10 / span 3;
 }
 .controls {
-				grid-row: 10;
-				grid-column: 1 / span 4;
+	grid-row: 10;
+	grid-column: 1 / span 4;
 }
 .banner {
-				grid-row: 10 / span 2;
-				grid-column: span 5;
+	grid-row: 10 / span 2;
+	grid-column: span 5;
 }
