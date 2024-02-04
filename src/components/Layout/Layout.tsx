@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
 import "./Layout.css";
 import { NavMenu } from "../NavMenu/NavMenu";
-export const Layout = ({ children }: { children: ReactNode }) => {
+import { Outlet } from "react-router-dom";
+export const Layout = () => {
   return (
     <div className="container">
       <div className="sidebar">
@@ -9,7 +9,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
           <NavMenu />
         </div>
       </div>
-      <div className="content">{children}</div>
+      <div className="content"> <Outlet/> </div>
     </div>
   );
 };
