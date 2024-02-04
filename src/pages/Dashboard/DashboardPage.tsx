@@ -1,5 +1,5 @@
-import { Cards } from '../Dashboard/Cards';
-import { Search } from '../Dashboard/Search';
+import { Cards } from '@/components/Dashboard/Cards';
+import { Search } from '@/components/Dashboard/Search';
 import './DashboardPage.css';
 
 export const DashboardPage = () => {
