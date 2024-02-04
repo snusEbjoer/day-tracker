@@ -3,7 +3,7 @@ import './Cards.css';
 export const Cards = () => {
 
 	return (
-	<div className="dashboard_cards">
+		<div className="dashboard_cards">
 
 			<div className="card">
 				<h3 className="card_title">
@@ -21,7 +21,7 @@ export const Cards = () => {
 				</div>
 
 			</div>
-			
-	</div>
+
+		</div>
 	)
 }
