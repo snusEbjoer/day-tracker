@@ -1,6 +1,6 @@
 import { Cards } from '@/components/Dashboard/Cards';
 import { Search } from '@/components/Dashboard/Search';
-import './DashboardPage.css';
+import './Dashboard.css';
 
 export const Dashboard = () => {
 
