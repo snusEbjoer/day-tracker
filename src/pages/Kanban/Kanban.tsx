@@ -96,7 +96,6 @@ export const Kanban = () => {
           : el
       )
     );
-    console.log("asdasd");
   };
   const handleDragOver = (e: DragEvent) => {
     e.preventDefault();
