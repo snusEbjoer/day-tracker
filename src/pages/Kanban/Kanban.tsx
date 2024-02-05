@@ -1,6 +1,6 @@
 import { DragEvent, useState } from "react";
-import { AddItem } from "../AddItem/AddItem";
-import { KanbanColumn } from "../KanbanColumn/KanbanColumn";
+import { AddItem } from "@/components/AddItem";
+import { KanbanColumn } from "@/components/Kanban/KanbanColumn";
 import "./Kanban.css";
 export type KanbanTask = {
   id: number;
@@ -10,7 +10,7 @@ export type KanbanTask = {
 };
 
 export const Kanban = () => {
-  const [draggedItem, setDraggetItem] = useState<number>(0);
+  const [draggedItem, setDraggedItem] = useState<number>(0);
   const [destination, setDestitanion] = useState<string>("Tasks");
   const [tasks, setTasks] = useState<KanbanTask[]>([]);
   const addTask = (task: string) => {
@@ -24,23 +24,23 @@ export const Kanban = () => {
       },
     ]);
   };
+
   const lastId = (arr: KanbanTask[]) => {
     return arr.reduce((acc, v) => (acc > v.id ? acc : v.id), 1);
   };
-  const findLast = (arr: KanbanTask[]) => {
-    const newArr = arr.map((el) => el.columnPosition);
-    if (newArr.length === 0) {
-      return 0;
-    }
-    return Math.max(...newArr);
-  };
+
+  const findLast = (arr: KanbanTask[]) => 
+    arr.reduce((acc, { columnPosition }) =>
+      acc < columnPosition ? columnPosition : acc,
+    0);
+
   const findLastInCol = (arr: KanbanTask[], name: string) => {
     const newArr = arr.filter((el) => el.columnName === name);
-
     return findLast(newArr);
   };
-  const handleDragStart = (e: DragEvent, id: number) => {
-    setDraggetItem(id);
+
+  const handleDragStart = (_e: DragEvent, id: number) => {
+    setDraggedItem(id);
   };
   const handleDragEnd = (e: DragEvent) => {
     e.preventDefault();
@@ -48,17 +48,15 @@ export const Kanban = () => {
     setTasks((prev) =>
       prev.map((el) => {
         if (el.columnName === destination) {
-          console.log(acc);
           return { ...el, columnPosition: acc++ };
         }
         return el;
       })
     );
     setDestitanion("Tasks");
-    setDraggetItem(0);
-    acc = 1;
+    setDraggedItem(0);
   };
-  const handleDragEnter = (e: DragEvent, name: string) => {
+  const handleDragEnter = (_e: DragEvent, name: string) => {
     setDestitanion(name);
   };
   const handleItemDrop = (e: DragEvent, id: number) => {
@@ -96,7 +94,6 @@ export const Kanban = () => {
           : el
       )
     );
-    console.log("asdasd");
   };
   const handleDragOver = (e: DragEvent) => {
     e.preventDefault();
