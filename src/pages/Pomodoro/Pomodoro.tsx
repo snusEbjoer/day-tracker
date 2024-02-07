@@ -1,56 +1,49 @@
-import { Timer } from "@/components/Timer/Timer";
+import { Timer } from "@/components/Timer";
 import { ChangeEvent, useEffect, useState } from "react";
-type Pomadoro = {
-  minutes: number;
+export type Pomadoro = {
+  workTime: number;
   shortBreak: number;
   longBreak: number;
 };
 export const Pomadoro = () => {
-  const [startTime, setStartTime] = useState<number>(0);
   const [pomadoro, setPomadoro] = useState<Pomadoro>({
-    minutes: startTime || 0.1,
-    shortBreak: 10,
-    longBreak: 15,
+    workTime: 1,
+    shortBreak: 2,
+    longBreak: 3,
   });
-  const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [isEnded, setIsEnded] = useState<boolean>(false);
-  const [pauseIsEnded, setPauseIsEnded] = useState<boolean>(false);
+  const [startTime, setStartTime] = useState<number>(pomadoro.workTime);
   const [count, setCount] = useState<number>(0);
-  const toggleIsEnded = () => {
-    setIsEnded((prev) => !prev);
-  };
-  const toggleIsRunning = () => {
-    setIsRunning((prev) => !prev);
-  };
-  const countChange = () => {
-    setCount((prev) => prev + 1);
-  };
+  const [isPause, setIsPause] = useState<boolean>(false);
   const handlePomadoroChange =
     (key: string) => (e: ChangeEvent<HTMLInputElement>) => {
       setPomadoro((prev) => ({ ...prev, [key]: e.target.value }));
     };
-  const handlePause = () => {
-    if (isEnded && count < 4) {
-      countChange();
-      toggleIsEnded();
-      return pomadoro.shortBreak;
-    } else if (isEnded && count == 4) {
-      toggleIsEnded();
+  const toggleIsPause = () => {
+    setIsPause((prev) => !prev);
+  };
+  const changeTime = () => {
+    if (!isPause && count < 4) {
+      setStartTime(pomadoro.shortBreak);
+      setCount((prev) => prev + 1);
+    }
+    if (!isPause && count === 4) {
       setCount(0);
-      return pomadoro.longBreak;
-    } else {
-      return pomadoro.minutes;
+      setStartTime(pomadoro.longBreak);
+    }
+    if (isPause) {
+      setStartTime(pomadoro.workTime);
     }
   };
+  useEffect(() => {
+    changeTime();
+  }, [isPause]);
   return (
     <>
       <Timer
-        startTime={handlePause()}
-        toggleIsEnded={toggleIsEnded}
-        toggleIsRunning={toggleIsRunning}
-        isRunning={isRunning}
-        isEnded={isEnded}
+        time={startTime}
         backwards={true}
+        isPause={isPause}
+        toggleIsPause={toggleIsPause}
       />
     </>
   );

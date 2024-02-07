@@ -1,71 +1,39 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Timer.css";
+import { useLocation } from "react-router-dom";
 
-export type Timer = {
-  seconds: number;
-  minutes: number;
-  hours: number;
-};
 type TimerProps = {
+  time: number;
   backwards: boolean;
-  startTime: number;
-  isRunning: boolean;
-  isEnded: boolean;
-  toggleIsRunning: (e?: React.MouseEvent<HTMLButtonElement>) => void;
-  toggleIsEnded: () => void;
+  toggleIsPause: () => void;
+  isPause: boolean;
 };
 export const Timer = ({
+  time,
   backwards,
-  startTime,
-  isRunning,
-  toggleIsEnded,
-  toggleIsRunning,
-  isEnded,
+  toggleIsPause,
+  isPause,
 }: TimerProps) => {
-  const [time, setTime] = useState({
-    hours: 0,
-    minutes: startTime || 40,
-    seconds: 0,
-  });
-  let worker: Worker;
-  const isTime = (hours: number, minutes: number, seconds: number) => {
-    if (backwards && !hours && !minutes && !seconds) {
-      return false;
-    }
-    return true;
+  const [seconds, setSeconds] = useState<number>(time);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
+  const toggleIsRunning = () => {
+    setIsRunning((prev) => !prev);
   };
-
+  const incDec = backwards ? -1 : 1;
+  let worker: Worker;
   useEffect(() => {
-    if (!isRunning || isEnded) return;
-    if (!isTime(time.hours, time.minutes, time.seconds)) return;
+    if (!isRunning) return;
+    let localTime = seconds + 1;
     worker = new Worker(new URL("./timerWorker.ts", import.meta.url));
-    worker.onmessage = (event) => {
+    worker.onmessage = (event: MessageEvent) => {
       if (event.data === "tick") {
-        if (!isRunning || isEnded) return;
-        if (!isTime(time.hours, time.minutes, time.seconds)) {
-          toggleIsEnded();
-          return;
+        setSeconds((prev) => prev + incDec);
+        localTime += incDec;
+        if (isRunning && localTime === 0 && backwards) {
+          toggleIsRunning();
+          toggleIsPause();
+          setSeconds(time);
         }
-        console.log(time);
-        setTime((prevTime) => {
-          const incrDecr = backwards ? -1 : +1;
-          const totalSeconds =
-            prevTime.hours * 3600 +
-            prevTime.minutes * 60 +
-            prevTime.seconds +
-            incrDecr;
-          const hours = Math.floor(totalSeconds / 3600);
-          const minutes = Math.floor((totalSeconds % 3600) / 60);
-          const seconds = totalSeconds % 60;
-          if (!isTime(hours, minutes, seconds)) {
-            return { minutes: 0, seconds: 0, hours: 0 };
-          }
-          return {
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds,
-          };
-        });
       }
     };
 
@@ -74,13 +42,12 @@ export const Timer = ({
       worker.postMessage("stop");
       worker.terminate();
     };
-  }, [isRunning, isEnded]);
-
+  }, [isRunning, isPause, time]);
   return (
     <div>
       <div className="timer">
-        <div>{time.minutes}</div>
-        <div>{time.seconds}</div>
+        <div>{0}</div>
+        <div>{seconds}</div>
         <button onClick={toggleIsRunning}>start</button>
       </div>
     </div>

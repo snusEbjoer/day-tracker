@@ -30,10 +30,10 @@ export const NavMenu = () => {
         icon={<PomadoroIcon isActive={isActive("/pomadoro")} />}
       />
       <NavItem
-        name={"Statistics"}
-        path={"/stats"}
-        isActive={isActive("/stats")}
-        icon={<StatisticksIcon isActive={isActive("/stats")} />}
+        name={"Flowmadoro"}
+        path={"/flowmadoro"}
+        isActive={isActive("/flowmadoro")}
+        icon={<StatisticksIcon isActive={isActive("/flowmadoro")} />}
       />
     </ul>
   );
