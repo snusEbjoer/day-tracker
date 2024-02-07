@@ -1,0 +1,13 @@
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.checklist__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

@@ -1,4 +1,8 @@
+import { Button } from "@/components/UI/Button/Button";
 import "./CheckListItem.css";
+import { CrossIcon } from "@/components/UI/icons/CrossIcon";
+import { CheckIcon } from "@/components/UI/icons/CheckIcon";
+import classNames from "classnames";
 type CheckListItemProps = {
   name: string;
   completed: boolean;
@@ -7,16 +11,18 @@ type CheckListItemProps = {
 };
 export const CheckListItem = ({
   name,
-  // completed,
+  completed,
   changeCompleted,
   deleteTask,
 }: CheckListItemProps) => {
   return (
-    <div className="wrapper">
-      <div className="item__title">{name}</div>
+    <div className="checklist__item">
+      <div className={classNames({ item__title: true, completed: completed })}>
+        {name}
+      </div>
       <div className="item__buttons">
-        <button onClick={changeCompleted}>done</button>
-        <button onClick={deleteTask}>delete</button>
+        <Button onClick={changeCompleted} icon={<CheckIcon />} />
+        <Button onClick={deleteTask} icon={<CrossIcon />} />
       </div>
     </div>
   );

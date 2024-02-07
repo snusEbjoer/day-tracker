@@ -5,8 +5,9 @@ type NavItemProps = {
   name: string;
   path: string;
   isActive: boolean;
+  icon: JSX.Element;
 };
-export const NavItem = ({ name, path, isActive }: NavItemProps) => {
+export const NavItem = ({ name, path, isActive, icon }: NavItemProps) => {
   return (
     <li
       className={classNames({
@@ -23,6 +24,7 @@ export const NavItem = ({ name, path, isActive }: NavItemProps) => {
         })}
         to={path}
       >
+        {icon}
         {name}
       </Link>
     </li>

@@ -1,4 +1,4 @@
-import { DragEvent, useState } from "react";
+import { DragEvent, useEffect, useState } from "react";
 import { AddItem } from "@/components/AddItem";
 import { KanbanColumn } from "@/components/Kanban/KanbanColumn";
 import "./Kanban.css";
@@ -12,7 +12,9 @@ export type KanbanTask = {
 export const Kanban = () => {
   const [draggedItem, setDraggedItem] = useState<number>(0);
   const [destination, setDestitanion] = useState<string>("Tasks");
-  const [tasks, setTasks] = useState<KanbanTask[]>([]);
+  const [tasks, setTasks] = useState<KanbanTask[]>(
+    JSON.parse(localStorage.getItem("kanban") || "[]") || []
+  );
   const addTask = (task: string) => {
     setTasks((prev) => [
       ...prev,
@@ -24,15 +26,19 @@ export const Kanban = () => {
       },
     ]);
   };
-
+  const deleteTask = (id: number) => {
+    setTasks((prev) => prev.filter((el) => el.id !== id));
+  };
   const lastId = (arr: KanbanTask[]) => {
     return arr.reduce((acc, v) => (acc > v.id ? acc : v.id), 1);
   };
 
-  const findLast = (arr: KanbanTask[]) => 
-    arr.reduce((acc, { columnPosition }) =>
-      acc < columnPosition ? columnPosition : acc,
-    0);
+  const findLast = (arr: KanbanTask[]) =>
+    arr.reduce(
+      (acc, { columnPosition }) =>
+        acc < columnPosition ? columnPosition : acc,
+      0
+    );
 
   const findLastInCol = (arr: KanbanTask[], name: string) => {
     const newArr = arr.filter((el) => el.columnName === name);
@@ -100,6 +106,7 @@ export const Kanban = () => {
   };
 
   const addColProps = (key: string, name: string) => ({
+    deleteTask,
     handleDragEnd,
     handleDragEnter,
     handleDragStart,
@@ -110,7 +117,9 @@ export const Kanban = () => {
     key,
     name,
   });
-
+  useEffect(() => {
+    localStorage.setItem("kanban", JSON.stringify(tasks));
+  });
   return (
     <div className="kanban">
       <div className="add-kanban-task">

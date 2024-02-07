@@ -5,6 +5,7 @@ import "./KanbanColumn.css";
 type KanbanColumnProps = {
   name: string;
   tasks: KanbanTask[];
+  deleteTask: (id: number) => void;
   handleDragEnter: (e: DragEvent, name: string) => void;
   handleDragStart: (e: DragEvent, id: number) => void;
   handleDragEnd: (e: DragEvent) => void;
@@ -16,6 +17,7 @@ type KanbanColumnProps = {
 export const KanbanColumn = ({
   name,
   tasks,
+  deleteTask,
   handleDragEnd,
   handleDragEnter,
   handleDragStart,
@@ -38,6 +40,7 @@ export const KanbanColumn = ({
             (el) =>
               el.columnName === name && (
                 <KanbanItem
+                  column={name}
                   key={el.id}
                   name={el.name}
                   id={el.id}
@@ -45,6 +48,7 @@ export const KanbanColumn = ({
                   handleDragEnd={handleDragEnd}
                   handleItemDrop={(e) => handleItemDrop(e, el.id)}
                   handleDragOver={handleDragOver}
+                  deleteTask={deleteTask}
                 />
               )
           )}

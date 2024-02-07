@@ -4,12 +4,28 @@
   justify-content: center;
   width: 100%;
   max-width: 360px;
-  border: 1px solid #e5e5e5;
   border-radius: 10px;
   padding: 10px;
+  position: relative;
 }
 .item-name {
   font-family: "PT Sans";
   font-size: 14px;
   word-break: break-word;
+}
+.tasks-mod {
+  border: 1px solid #e5e5e5;
+}
+
+.in-progress-mod {
+  border: 1px solid #f1c40f;
+}
+.done-mod {
+  border: 1px solid #2ecc71;
+}
+.cross-icon {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  cursor: pointer;
 }
