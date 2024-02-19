@@ -7,44 +7,82 @@ export type Pomadoro = {
 };
 export const Pomadoro = () => {
   const [pomadoro, setPomadoro] = useState<Pomadoro>({
-    workTime: 1,
-    shortBreak: 2,
-    longBreak: 3,
+    workTime: 5,
+    shortBreak: 20,
+    longBreak: 30,
   });
   const [startTime, setStartTime] = useState<number>(pomadoro.workTime);
   const [count, setCount] = useState<number>(0);
-  const [isPause, setIsPause] = useState<boolean>(false);
+  const [isEnded, setIsEnded] = useState<boolean>(false);
+  const [isShown, setIsShown] = useState<boolean>(false);
+  const [isSettingsIsShown, setIsSttingsIsShown] = useState<boolean>(false);
   const handlePomadoroChange =
     (key: string) => (e: ChangeEvent<HTMLInputElement>) => {
-      setPomadoro((prev) => ({ ...prev, [key]: e.target.value }));
+      setPomadoro((prev) => ({ ...prev, [key]: Number(e.target.value) }));
     };
-  const toggleIsPause = () => {
-    setIsPause((prev) => !prev);
+  const toggleIsEnded = () => {
+    setIsEnded((prev) => !prev);
   };
-  const changeTime = () => {
-    if (!isPause && count < 4) {
-      setStartTime(pomadoro.shortBreak);
+  const calcTime = () => {
+    if (isEnded && count < 4) {
+      return pomadoro.shortBreak;
+    }
+    if (isEnded && count === 4) {
+      return pomadoro.longBreak;
+    }
+    if (!isEnded) {
+      return pomadoro.workTime;
+    }
+    return pomadoro.workTime;
+  };
+  const calcCount = () => {
+    if (isEnded && count < 4) {
       setCount((prev) => prev + 1);
     }
-    if (!isPause && count === 4) {
+    if (isEnded && count === 4) {
       setCount(0);
-      setStartTime(pomadoro.longBreak);
-    }
-    if (isPause) {
-      setStartTime(pomadoro.workTime);
     }
   };
   useEffect(() => {
-    changeTime();
-  }, [isPause]);
+    calcCount();
+  }, [isEnded]);
   return (
-    <>
+    <div className="pomadoro">
       <Timer
-        time={startTime}
+        time={calcTime()}
         backwards={true}
-        isPause={isPause}
-        toggleIsPause={toggleIsPause}
+        toggleIsEnded={toggleIsEnded}
+        isEnded={isEnded}
       />
-    </>
+      <div className="pomadoro-settings">
+        <div className="break-settings">
+          <div className="setting">
+            <p>Pomodoro</p>
+            <input
+              type="number"
+              value={pomadoro.workTime}
+              onChange={handlePomadoroChange("workTime")}
+            />
+          </div>
+          <div className="setting">
+            <p>Short break</p>
+            <input
+              type="number"
+              value={pomadoro.shortBreak}
+              onChange={handlePomadoroChange("shortBreak")}
+            />
+          </div>
+          <div className="setting">
+            <p>Long break</p>
+            <input
+              type="number"
+              value={pomadoro.longBreak}
+              onChange={handlePomadoroChange("longBreak")}
+            />
+          </div>
+        </div>
+        <div>{count}</div>
+      </div>
+    </div>
   );
 };
