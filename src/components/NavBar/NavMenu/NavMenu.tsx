@@ -15,25 +15,25 @@ export const NavMenu = () => {
         name={"Checklist"}
         path={"/"}
         isActive={isActive("/")}
-        icon={<ChecklistIcon isActive={isActive("/")} />}
+        icon={<ChecklistIcon />}
       />
       <NavItem
         name={"Kanban"}
         path={"/kanban"}
         isActive={isActive("/kanban")}
-        icon={<KanbanIcon isActive={isActive("/kanban")} />}
+        icon={<KanbanIcon />}
       />
       <NavItem
         name={"Pomadoro"}
         path={"/pomadoro"}
         isActive={isActive("/pomadoro")}
-        icon={<PomadoroIcon isActive={isActive("/pomadoro")} />}
+        icon={<PomadoroIcon />}
       />
       <NavItem
         name={"Flowmadoro"}
         path={"/flowmadoro"}
         isActive={isActive("/flowmadoro")}
-        icon={<StatisticksIcon isActive={isActive("/flowmadoro")} />}
+        icon={<StatisticksIcon />}
       />
     </ul>
   );

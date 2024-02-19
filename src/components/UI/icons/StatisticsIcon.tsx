@@ -1,4 +1,4 @@
-export const StatisticksIcon = ({ isActive }: { isActive: boolean }) => {
+export const StatisticksIcon = () => {
   return (
     <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
       <path

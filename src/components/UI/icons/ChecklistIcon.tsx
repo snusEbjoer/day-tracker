@@ -1,4 +1,4 @@
-export const ChecklistIcon = ({ isActive }: { isActive: boolean }) => {
+export const ChecklistIcon = () => {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em">
       <path d="M3.5 3.75a.25.25 0 01.25-.25h13.5a.25.25 0 01.25.25v10a.75.75 0 001.5 0v-10A1.75 1.75 0 0017.25 2H3.75A1.75 1.75 0 002 3.75v16.5c0 .966.784 1.75 1.75 1.75h7a.75.75 0 000-1.5h-7a.25.25 0 01-.25-.25V3.75z" />

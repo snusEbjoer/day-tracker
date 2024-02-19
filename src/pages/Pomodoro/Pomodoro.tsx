@@ -11,11 +11,8 @@ export const Pomadoro = () => {
     shortBreak: 20,
     longBreak: 30,
   });
-  const [startTime, setStartTime] = useState<number>(pomadoro.workTime);
   const [count, setCount] = useState<number>(0);
   const [isEnded, setIsEnded] = useState<boolean>(false);
-  const [isShown, setIsShown] = useState<boolean>(false);
-  const [isSettingsIsShown, setIsSttingsIsShown] = useState<boolean>(false);
   const handlePomadoroChange =
     (key: string) => (e: ChangeEvent<HTMLInputElement>) => {
       setPomadoro((prev) => ({ ...prev, [key]: Number(e.target.value) }));

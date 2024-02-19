@@ -1,4 +1,4 @@
-export const KanbanIcon = ({ isActive }: { isActive: boolean }) => {
+export const KanbanIcon = () => {
   return (
     <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
       <path d="M13.5 1a1 1 0 011 1v12a1 1 0 01-1 1h-11a1 1 0 01-1-1V2a1 1 0 011-1h11zm-11-1a2 2 0 00-2 2v12a2 2 0 002 2h11a2 2 0 002-2V2a2 2 0 00-2-2h-11z" />

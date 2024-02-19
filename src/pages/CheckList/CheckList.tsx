@@ -12,9 +12,7 @@ export const CheckList = () => {
   const [tasks, setTasks] = useState<Task[]>(
     JSON.parse(localStorage.getItem("tasks") || "[]") || []
   );
-  const [changedAt, setChangedAt] = useState(
-    new Date(localStorage.getItem("changedAt") || "")
-  );
+  const changedAt = new Date(localStorage.getItem("changedAt") || "");
   const changeCompleted = (id: string) => {
     setTasks((prev) =>
       prev.map((el) =>

@@ -1,4 +1,4 @@
-let timerInterval: number;
+let timerInterval;
 
 self.onmessage = function (event) {
   if (event.data === "start") {

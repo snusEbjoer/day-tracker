@@ -32,7 +32,7 @@ export const Timer = ({
     }
     if (!isRunning) return;
     let localTime = seconds + 1;
-    worker = new Worker(new URL("./timerWorker.ts", import.meta.url));
+    worker = new Worker(new URL("./timerWorker", import.meta.url));
     worker.onmessage = (event: MessageEvent) => {
       if (event.data === "tick") {
         setSeconds((prev) => prev + incDec);
